@@ -27,7 +27,7 @@ jobs:
       # ============================================
       WALLET_COUNT: '16'
       CONTAINERS_PER_WALLET: '20'
-      RUNTIME_HOURS: '5.5'
+      RUNTIME_HOURS: '5.6'
       REUSE_WALLETS: 'true'
       
       BATCH_SIZE: '20'
@@ -36,10 +36,6 @@ jobs:
       
       # Total runners (for API key splitting)
       TOTAL_RUNNERS: '5'
-
-      # Telegram Configuration (HARDCODED - NOT RECOMMENDED FOR PRODUCTION)
-      TELEGRAM_BOT_TOKEN: '8378781421:AAEEMC7AIFzpbcK6P_MM5E1d-weQ73J_Wr4'
-      TELEGRAM_CHAT_ID: '1051378557'
       
     steps:
       # ============================================
@@ -376,8 +372,8 @@ jobs:
       - name: 📱 Send Deployment Success Notification
         if: success()
         env:
-          BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          BOT_TOKEN: '8378781421:AAEEMC7AIFzpbcK6P_MM5E1d-weQ73J_Wr4'
+          CHAT_ID: '1051378557'
         run: |
           if [ -z "$BOT_TOKEN" ] || [ -z "$CHAT_ID" ]; then
             echo "⚠️  Telegram not configured, skipping"
@@ -523,8 +519,8 @@ jobs:
       - name: 📱 Send Final Success Notification
         if: success()
         env:
-          BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          BOT_TOKEN: '8378781421:AAEEMC7AIFzpbcK6P_MM5E1d-weQ73J_Wr4'
+          CHAT_ID: '1051378557'
         run: |
           if [ -z "$BOT_TOKEN" ] || [ -z "$CHAT_ID" ]; then
             exit 0
@@ -593,8 +589,8 @@ jobs:
       - name: 📱 Send Failure Notification
         if: failure()
         env:
-          BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          BOT_TOKEN: '8378781421:AAEEMC7AIFzpbcK6P_MM5E1d-weQ73J_Wr4'
+          CHAT_ID: '1051378557'
         run: |
           if [ -z "$BOT_TOKEN" ] || [ -z "$CHAT_ID" ]; then
             exit 0
@@ -647,8 +643,8 @@ jobs:
     steps:
       - name: 📊 Generate Summary
         env:
-          BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          BOT_TOKEN: '8378781421:AAEEMC7AIFzpbcK6P_MM5E1d-weQ73J_Wr4'
+          CHAT_ID: '1051378557'
           ALL_KEYS: ${{ secrets.NOVITA_API_KEYS }}
         run: |
           echo "📊 Generating summary report..."
